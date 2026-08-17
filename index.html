@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discovery of natural RNA phosphorothioates and their writer machinery</title>
+
+<!-- ═══ EMBARGO GUARD ═══════════════════════════════════════════════════
+     Keeps this page out of Google while the paper is still in press.
+     DELETE this one line once the paper is published.
+     ═══════════════════════════════════════════════════════════════════ -->
+<meta name="robots" content="noindex">
+
+<meta property="og:title" content="Discovery of natural RNA phosphorothioates and their writer machinery">
+<meta property="og:description" content="Krayn et al., Cell (2026). Poster and paper.">
+<meta name="color-scheme" content="light dark">
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --accent:#0b5cad; --line:#e2e2e2; --bg:#fff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#e8e8e8; --muted:#9a9a9a; --accent:#6fb3f2; --line:#333; --bg:#161616; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2.2rem 1.3rem 3.5rem;
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--fg); background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 34rem; margin: 0 auto; }
+  .eyebrow {
+    margin: 0 0 .9rem; font-size: 13px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  h1 { margin: 0 0 .7rem; font-size: 25px; line-height: 1.25; font-weight: 650; }
+  .cite { margin: 0 0 1.6rem; color: var(--muted); font-size: 16px; }
+  #paper:not(:empty) { margin: 0 0 1.6rem; }
+  .btn {
+    display: inline-block; padding: .7rem 1.15rem; border-radius: 8px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 17px;
+  }
+  ul.links { list-style: none; margin: 0; padding: 1.4rem 0 0; border-top: 1px solid var(--line); }
+  ul.links li { margin: 0 0 .85rem; }
+  a { color: var(--accent); }
+  .note { color: var(--muted); font-size: 14px; }
+  footer { margin-top: 2.4rem; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="eyebrow">Schwartz Lab &middot; Weizmann Institute of Science</p>
+
+  <h1>Discovery of natural RNA phosphorothioates and their writer machinery</h1>
+
+  <p class="cite" id="cite">Krayn <em>et al.</em>, <strong>Cell</strong>, in press (2026)</p>
+
+  <!-- Filled in automatically once DOI is set at the bottom of this file. -->
+  <div id="paper"></div>
+
+  <ul class="links">
+    <li><a href="poster.pdf">Download the poster (PDF)</a></li>
+    <li>Contact: <a href="mailto:alex.a.maman@gmail.com">alex.a.maman@gmail.com</a></li>
+  </ul>
+
+  <noscript>
+    <p class="note">
+      Not published yet at the time of printing. Once it is, find it here:
+      <a href="https://europepmc.org/search?query=phosphorothioate%20AND%20AUTH%3A%22Krayn%22">search Europe PMC</a>.
+    </p>
+  </noscript>
+
+  <footer>
+    Landing page for the conference poster QR code.
+  </footer>
+
+</main>
+
+<script>
+  /* ══════════════════════════════════════════════════════════════════════
+     HOW THIS PAGE BECOMES THE PAPER
+     ──────────────────────────────────────────────────────────────────────
+     You do not have to do anything. On every visit this page asks Crossref
+     whether the paper has been published yet. The moment it has, visitors
+     are sent straight to it. Until then they see this landing page.
+
+     MANUAL OVERRIDE: if you'd rather not wait for Crossref (or the title
+     changed), paste the DOI below, commit, and that wins immediately:
+         const DOI = "10.1016/j.cell.2026.05.014";
+     Empty is safe — nobody is ever sent to a placeholder link.
+     ═════════════════════════════════════════════════════════════════════ */
+  const DOI   = "";
+  const TITLE = "Discovery of natural RNA phosphorothioates and their writer machinery";
+  const AUTHOR = "krayn";
+
+  const go = d => location.replace("https://doi.org/" + d);
+
+  if (DOI) {
+    go(DOI);
+  } else {
+    /* Ask Crossref if it exists yet. Any failure (offline, slow conference
+       wifi, no match) silently leaves the landing page up — fail-safe. */
+    const norm  = s => (s || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    const score = (a, b) => {
+      const A = new Set(norm(a).split(" ")), B = new Set(norm(b).split(" "));
+      let hit = 0; A.forEach(w => { if (B.has(w)) hit++; });
+      return hit / Math.max(A.size, B.size, 1);
+    };
+
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 2500);
+
+    fetch("https://api.crossref.org/works?rows=5&mailto=alex.a.maman@gmail.com"
+          + "&query.bibliographic=" + encodeURIComponent(TITLE),
+          { signal: ctl.signal })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        /* Strict match: near-identical title AND an author named Krayn.
+           Both must agree before we ever redirect someone. */
+        const match = (data.message.items || []).find(it =>
+          score((it.title || [])[0], TITLE) >= 0.75 &&
+          (it.author || []).some(a => norm(a.family) === AUTHOR)
+        );
+        if (match) go(match.DOI);
+      })
+      .catch(() => {})
+      .finally(() => clearTimeout(timer));
+  }
+</script>
+</body>
+</html>
