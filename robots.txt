@@ -1,0 +1,7 @@
+# Embargo guard: keeps search engines off this site (including poster.pdf)
+# while the paper is in press. The QR code still works normally - this only
+# blocks crawlers, not people.
+#
+# DELETE THIS FILE once the paper is published.
+User-agent: *
+Disallow: /
