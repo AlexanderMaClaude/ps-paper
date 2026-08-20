@@ -3,7 +3,7 @@
 Landing page behind the QR code on the conference poster for:
 
 > **Discovery of RNA phosphorothioate modifications in anaerobic and thermophilic archaea:**
-> *a dynamic backbone modification coupled to environmental sulfur metabolism*
+> *a dynamic backbone modification coupled to environmental conditions*
 > Maman *et al.* — Accepted, *Cell* (2026)
 
 Live at: **https://alexandermaclaude.github.io/ps-paper/**
@@ -16,8 +16,8 @@ instantly on a phone over bad conference wifi.
 | File | Purpose |
 |---|---|
 | `index.html` | The landing page |
-| `poster.pdf` | Full-quality poster, 19.5 MB |
-| `poster-lowres.pdf` | 150 dpi rasterised copy, 2.1 MB (9.4× smaller) |
+| `poster.pdf` | The **printed** poster (V16, as sent to the printer), 5.9 MB |
+| `poster-lowres.pdf` | 90 dpi rasterised copy, 1.8 MB (3.2× smaller) |
 | `qr/poster_qr.{svg,eps,pdf,png}` | Print-ready QR artwork, ECC Q |
 | `robots.txt` | Embargo guard — blocks crawlers site-wide |
 
@@ -103,7 +103,24 @@ python -c "
 import fitz
 d=fitz.open('poster.pdf'); o=fitz.open()
 for p in d:
-    pix=p.get_pixmap(dpi=150)
+    pix=p.get_pixmap(dpi=90)
     o.new_page(width=p.rect.width,height=p.rect.height).insert_image(p.rect, stream=pix.tobytes('jpeg',jpg_quality=70))
 o.save('poster-lowres.pdf', garbage=4, deflate=True)"
 ```
+
+---
+
+## Poster provenance
+
+`poster.pdf` is the final printed artwork
+(`Poster_Tara_AlexanderMaman_V16_ToPrint.pdf`, A0 841×1189 mm, 2026-08-20).
+
+The QR code embedded in that printed file was decoded and confirmed to resolve
+to `https://alexandermaclaude.github.io/ps-paper/` — i.e. **the poster on the
+wall points at this page**.
+
+The earlier draft is archived outside the repo at
+`../ps-paper-archive/poster_draft_v1_20260817.pdf` (and remains in git history).
+
+Note: the printed subtitle reads "coupled to environmental **conditions**"; the
+draft said "sulfur metabolism". The landing page follows the printed version.
