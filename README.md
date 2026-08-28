@@ -4,7 +4,7 @@ Landing page behind the QR code on the conference poster for:
 
 > **Discovery of RNA phosphorothioate modifications in anaerobic and thermophilic archaea:**
 > *a dynamic backbone modification coupled to environmental conditions*
-> Maman *et al.* — Accepted, *Cell* (2026)
+> Maman *et al.* — In press, *Cell* (2026)
 
 Live at: **https://alexandermaclaude.github.io/ps-paper/**
 
