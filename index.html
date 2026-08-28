@@ -40,6 +40,10 @@
   .size { color: var(--muted); font-size: 14px; }
   #banner { display: none; margin: 0 0 1.3rem; padding: .8rem 1rem; border-radius: 8px;
             background: var(--soft); font-size: 15px; }
+  figure.ga { margin: 0 0 1.7rem; }
+  figure.ga a { display: block; }
+  figure.ga img { width: 100%; height: auto; display: block; border-radius: 6px; }
+  figure.ga figcaption { margin-top: .5rem; font-size: 13px; color: var(--muted); }
   footer { margin-top: 2.4rem; color: var(--muted); font-size: 13px; }
 </style>
 </head>
@@ -54,6 +58,21 @@
   <p class="cite" id="cite">Maman <em>et al.</em> &middot; Accepted, <strong>Cell</strong> (2026)</p>
 
   <div id="banner"></div>
+
+  <figure class="ga">
+    <a href="graphical-abstract.pdf" title="Open the full-resolution graphical abstract (PDF)">
+      <picture>
+        <source srcset="graphical-abstract.webp" type="image/webp">
+        <img src="graphical-abstract.jpg" width="1400" height="1400" decoding="async"
+             alt="Graphical abstract in three panels: (1) orthogonal detection of RNA
+                  phosphorothioates by genomics and LC-MS/MS; (2) phosphorothioates mapped
+                  onto tRNA, 16S and 23S rRNA across a tree of archaea from gut, sediment,
+                  marsh and hydrothermal environments; (3) the Esti family of substrate-specific
+                  writer enzymes, coloured by RNA-binding, PAPS-reductase and novel domains.">
+      </picture>
+    </a>
+    <figcaption>Graphical abstract &middot; <a href="graphical-abstract.pdf">full-resolution PDF</a></figcaption>
+  </figure>
 
   <ul class="rows">
 
