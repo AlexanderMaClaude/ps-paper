@@ -16,6 +16,8 @@ instantly on a phone over bad conference wifi.
 | File | Purpose |
 |---|---|
 | `index.html` | The landing page |
+| `graphical-abstract.{webp,jpg}` | Inline hero image, 1400×1400 (147 KB / 240 KB fallback) |
+| `graphical-abstract.pdf` | Full-resolution graphical abstract, V20, 4.5 MB |
 | `poster.pdf` | The **printed** poster (V16, as sent to the printer), 5.9 MB |
 | `poster-lowres.pdf` | 90 dpi rasterised copy, 1.8 MB (3.2× smaller) |
 | `qr/poster_qr.{svg,eps,pdf,png}` | Print-ready QR artwork, ECC Q |
@@ -150,3 +152,32 @@ The unredacted original is kept **outside the repo** at
 whole site out of search engines. Deleting it on publication (see the checklist
 above) will also make the CV indexable by Google. That is expected — just be
 aware it is a deliberate choice, not an accident.
+
+---
+
+## Graphical abstract
+
+Displayed inline at the top of the page, above the link rows. Source is
+`GraphicalAbstractV20.pdf` (1200×1200 pt, square — the Cell format), renamed to
+`graphical-abstract.pdf` and kept for full-resolution viewing; clicking the
+image opens it.
+
+For the inline copy it is rasterised to **1400×1400** and served as
+**WebP (147 KB)** with a **JPEG (240 KB)** fallback via `<picture>`. WebP was
+chosen after measuring: at the same 1400 px it is 147 KB vs 240 KB JPEG and
+569 KB PNG. `width`/`height` are set on the `<img>` so the page does not shift
+as the image loads.
+
+### Regenerating
+
+```bash
+conda activate gh_claude
+python -c "
+import fitz, io
+from PIL import Image
+p=fitz.open('graphical-abstract.pdf')[0]
+z=1400/1200.0
+img=Image.open(io.BytesIO(p.get_pixmap(matrix=fitz.Matrix(z,z), alpha=False).tobytes('png'))).convert('RGB')
+img.save('graphical-abstract.webp', format='WEBP', quality=85, method=6)
+img.save('graphical-abstract.jpg',  format='JPEG', quality=85, optimize=True, progressive=True)"
+```
