@@ -19,6 +19,7 @@ instantly on a phone over bad conference wifi.
 | `poster.pdf` | The **printed** poster (V16, as sent to the printer), 5.9 MB |
 | `poster-lowres.pdf` | 90 dpi rasterised copy, 1.8 MB (3.2× smaller) |
 | `qr/poster_qr.{svg,eps,pdf,png}` | Print-ready QR artwork, ECC Q |
+| `Alexander_Maman_CV.pdf` | CV, **public/redacted** version, 143 KB |
 | `robots.txt` | Embargo guard — blocks crawlers site-wide |
 
 ---
@@ -124,3 +125,28 @@ The earlier draft is archived outside the repo at
 
 Note: the printed subtitle reads "coupled to environmental **conditions**"; the
 draft said "sulfur metabolism". The landing page follows the printed version.
+
+---
+
+## CV — what is published, and what is not
+
+`Alexander_Maman_CV.pdf` is a **redacted** copy prepared for public hosting.
+Removed, at the author's instruction:
+
+- personal mobile number,
+- dual-citizenship line,
+- the "Mandatory Military Service" section (IDF, Combat Engineering Corps).
+
+Everything else — education, publications, patents, funding, awards, talks,
+skills, research vision, languages — is unchanged. The text was genuinely
+deleted from the PDF text layer, not merely covered by a white box, and the
+layout below the removed section was shifted up so no gap remains.
+
+The unredacted original is kept **outside the repo** at
+`../ps-paper-archive/Alexander_Maman_CV_FULL_PRIVATE_20260823.pdf`, and
+`.gitignore` blocks it from ever being committed.
+
+⚠️ Note the interaction with the embargo guard: `robots.txt` currently keeps the
+whole site out of search engines. Deleting it on publication (see the checklist
+above) will also make the CV indexable by Google. That is expected — just be
+aware it is a deliberate choice, not an accident.
