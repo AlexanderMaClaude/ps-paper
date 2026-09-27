@@ -55,7 +55,7 @@
   <h1>Discovery of RNA phosphorothioate modifications in anaerobic and thermophilic archaea</h1>
   <p class="sub">A dynamic backbone modification coupled to environmental conditions</p>
 
-  <p class="cite" id="cite">Maman <em>et al.</em> &middot; In press, <strong>Cell</strong> (2026)</p>
+  <p class="cite" id="cite">Maman <em>et al.</em> &middot; <strong>Cell</strong> (2026)</p>
 
   <div id="banner"></div>
 
@@ -78,8 +78,7 @@
 
     <li id="paper-row">
       <span class="lbl">Paper</span>
-      <span class="pending">Link to the published article on Cell's website &mdash;
-      this row will be updated automatically once the paper is published.</span>
+      <a href="https://doi.org/10.1016/j.cell.2026.08.034">Read the published article at Cell &rarr;</a>
     </li>
 
     <li>
@@ -104,11 +103,6 @@
 
   </ul>
 
-  <noscript>
-    <p class="size">Once published, the paper can also be found by searching
-    <a href="https://europepmc.org/search?query=phosphorothioate%20AND%20AUTH%3A%22Maman%22">Europe PMC</a>.</p>
-  </noscript>
-
   <footer>Conference poster &middot; scan target for the QR code.</footer>
 
 </main>
@@ -130,14 +124,14 @@
      ═════════════════════════════════════════════════════════════════════ */
   const REDIRECT   = true;
   const DELAY_MS   = 1400;
-  const DOI        = "";
+  const DOI        = "10.1016/j.cell.2026.08.034";
 
   /* Match keys. Taken from the poster itself. Note there is an unrelated
      "Maman" who also publishes in Cell, so the surname alone is NOT enough —
      we additionally require "phosphorothioate" in the title, which he does
      not work on. Title wording may still change before publication, so the
      keyword is the primary key and full-title similarity is a fallback. */
-  const TITLE   = "Discovery of RNA phosphorothioate modifications in anaerobic and thermophilic archaea";
+  const TITLE   = "Phosphate backbone epitranscriptomics: Discovery of natural RNA phosphorothioates and their writer machinery";
   const AUTHOR  = "maman";
   const KEYWORD = "phosphorothioate";
   const MIN_YEAR = 2026;

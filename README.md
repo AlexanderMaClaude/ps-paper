@@ -4,7 +4,7 @@ Landing page behind the QR code on the conference poster for:
 
 > **Discovery of RNA phosphorothioate modifications in anaerobic and thermophilic archaea:**
 > *a dynamic backbone modification coupled to environmental conditions*
-> Maman *et al.* — In press, *Cell* (2026)
+> Maman *et al.* — *Cell* (2026), doi:10.1016/j.cell.2026.08.034
 
 Live at: **https://alexandermaclaude.github.io/ps-paper/**
 
@@ -181,3 +181,35 @@ img=Image.open(io.BytesIO(p.get_pixmap(matrix=fitz.Matrix(z,z), alpha=False).tob
 img.save('graphical-abstract.webp', format='WEBP', quality=85, method=6)
 img.save('graphical-abstract.jpg',  format='JPEG', quality=85, optimize=True, progressive=True)"
 ```
+
+---
+
+## PUBLISHED — 2026-09
+
+**DOI: [10.1016/j.cell.2026.08.034](https://doi.org/10.1016/j.cell.2026.08.034)**
+Published title: *"Phosphate backbone epitranscriptomics: Discovery of natural
+RNA phosphorothioates and their writer machinery"*, Cell, September 2026.
+
+The DOI is now hard-coded in `index.html` (`const DOI`), so the page links and
+forwards to the paper directly and no longer depends on Crossref.
+
+### ⚠️ Why the automatic Crossref redirect did NOT fire
+
+Worth recording, because the failure was not where it was tested. The matcher
+required author `maman` + `phosphorothioate` in the title, which the published
+record satisfies. But the *query* sent to Crossref used the **poster** title
+("Discovery of RNA phosphorothioate modifications in anaerobic and thermophilic
+archaea"), and the **published** title is different enough that the paper never
+came back in the result set to be matched against.
+
+Lesson: the retrieval step was the weak link, not the matching rule, and testing
+against a *simulated* record carrying the expected title could never expose it.
+A DOI, once known, beats any heuristic.
+
+### ⚠️ Do not use the author share link
+
+The link circulated on social media —
+`https://t.co/inqiX6azIr` → `https://authors.elsevier.com/c/1no8P_278y-cql` →
+`sciencedirect.com/science/authShare/S009286742601007X/...` — is an Elsevier
+**author share link, free access for 50 days only**. It expires. It must never be
+placed behind the permanent QR code. The page uses the DOI instead.
